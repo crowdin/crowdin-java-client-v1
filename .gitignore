@@ -1,0 +1,8 @@
+.gradle/
+.idea/
+.nb-gradle-properties
+.nb-gradle/
+build/
+classes/
+logs/
+LICENSE
