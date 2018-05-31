@@ -7,7 +7,7 @@ Crowdin provides RESTful API with XML or JSON over HTTP using GET or POST method
 #### Prerequisites
 
 * Java JDK 7 or newest
-* Gradle
+* Gradle or Maven
 
 #### Quick start
 
@@ -100,6 +100,6 @@ Ihor Popyk (ihor.popyk@crowdin.com)
 
 https://github.com/ihor-popyk
 
-Copyright: 2017 crowdin.com
+Copyright: 2018 crowdin.com
 
 This project is licensed under the MIT license, a copy of which can be found in the LICENSE file.
