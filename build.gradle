@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin:'application'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 version = '1.0.2'
 
@@ -30,9 +31,9 @@ dependencies {
 
 task buildJavaSdkJar(type: Jar) {
 	manifest {
-        attributes 'Implementation-Title': 'Crowdin CLI',
+        attributes 'Implementation-Title': 'Crowdin Java SDK',
         	'Implementation-Version': version,
-        	'Main-Class': 'com.crowdin.cli.Cli'
+        	'Main-Class': 'com.crowdin.Crowdin'
   }
   baseName = 'crowdin-java-sdk'
   from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
