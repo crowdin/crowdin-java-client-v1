@@ -53,7 +53,7 @@ Credentials credentials = new Credentials(BASE_URL, PROJECT_IDENTIFIER, PROJECT_
 CrowdinApiParametersBuilder parameters = new CrowdinApiParametersBuilder();
 parameters.json();
 ```
-* Create _CrowdinApiClient_ object and choose the necessory API method
+* Create _CrowdinApiClient_ object and choose the necessary API method
 ```
 CrowdinApiClient crwdn = new Crwdn();
 crwdn.getInfo(credentials, parameters);
