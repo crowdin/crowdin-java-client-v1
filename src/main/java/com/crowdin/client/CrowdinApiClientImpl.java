@@ -4,10 +4,10 @@ import com.crowdin.Credentials;
 import com.crowdin.exceptions.DirectoryNotFoundException;
 import com.crowdin.exceptions.EmptyParameterException;
 import com.crowdin.exceptions.UnAcceptableParametersValueException;
-import com.crowdin.utils.HttpRequest;
-import com.crowdin.utils.UrlBuilder;
 import com.crowdin.parameters.CrowdinApiParametersBuilder;
 import com.crowdin.parameters.CrowdinApiParametersValidator;
+import com.crowdin.utils.HttpRequest;
+import com.crowdin.utils.UrlBuilder;
 import com.sun.jersey.api.client.ClientResponse;
 
 /**

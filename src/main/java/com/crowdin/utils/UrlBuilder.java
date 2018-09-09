@@ -1,9 +1,10 @@
 package com.crowdin.utils;
 
 import com.crowdin.exceptions.EmptyParameterException;
+import org.apache.commons.lang3.text.StrSubstitutor;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.lang3.text.StrSubstitutor;
 
 /**
  *

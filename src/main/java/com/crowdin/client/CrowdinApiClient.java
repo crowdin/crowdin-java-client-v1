@@ -2,7 +2,6 @@ package com.crowdin.client;
 
 import com.crowdin.Credentials;
 import com.crowdin.exceptions.EmptyParameterException;
-import com.crowdin.parameters.CrowdinApiParameters;
 import com.crowdin.parameters.CrowdinApiParametersBuilder;
 import com.sun.jersey.api.client.ClientResponse;
 

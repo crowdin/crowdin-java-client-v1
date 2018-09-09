@@ -1,24 +1,21 @@
 package com.crowdin.utils;
 
+import com.crowdin.parameters.CrowdinApiParameters;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import org.apache.logging.log4j.LogManager;
-import com.crowdin.parameters.CrowdinApiParameters;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.multipart.impl.MultiPartWriter;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Response;
 
 /**
  *
@@ -43,7 +40,8 @@ public class HttpRequest {
    * @return String
    */
   public ClientResponse get(String url, MultivaluedMap<String, String> parameters) {
-    Client client = new Client();
+    URLConnectionClientHandler urlConnectionClientHandler  = new URLConnectionClientHandler(new ConnectionFactory());
+    Client client = new Client(urlConnectionClientHandler);
     WebResource webResource = client.resource(url);
     webResource = webResource.queryParams(parameters);
     ClientResponse response = webResource.get(ClientResponse.class);
@@ -58,7 +56,8 @@ public class HttpRequest {
    * @return String
    */
   public ClientResponse post(String url, MultivaluedMap<String, String> parameters, String type) {
-    Client client = new Client();
+    URLConnectionClientHandler urlConnectionClientHandler  = new URLConnectionClientHandler(new ConnectionFactory());
+    Client client = new Client(urlConnectionClientHandler);
     ClientResponse clientResponse;
     WebResource webResource = client.resource(url);
     if (type != null && REQUEST_POST_EXPANDED_UPLOAD.equalsIgnoreCase(type)) {
@@ -75,9 +74,8 @@ public class HttpRequest {
   }
   
   private ClientResponse uploadFiles(MultivaluedMap<String, String> parameters, String url) {
-    DefaultClientConfig clientConfig = new DefaultClientConfig();
-    clientConfig.getClasses().add(MultiPartWriter.class);
-    Client client = Client.create(clientConfig);
+    URLConnectionClientHandler urlConnectionClientHandler  = new URLConnectionClientHandler(new ConnectionFactory());
+    Client client = new Client(urlConnectionClientHandler);
     FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
     ClientResponse clientResponse = null;
     WebResource webResource;
