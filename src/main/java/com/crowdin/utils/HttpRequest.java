@@ -4,9 +4,11 @@ import com.crowdin.parameters.CrowdinApiParameters;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
+import com.sun.jersey.multipart.impl.MultiPartWriter;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -32,6 +34,10 @@ public class HttpRequest {
   public static final String OPEN_BRACKET = "[";
   
   public static final String CLOSE_BRACKET = "]";
+
+  public static final String HTTP_PROXY_HOST = "HTTP_PROXY_HOST";
+
+  public static final String HTTP_PROXY_PORT = "HTTP_PROXY_PORT";
   
   /**
    *
@@ -74,8 +80,17 @@ public class HttpRequest {
   }
   
   private ClientResponse uploadFiles(MultivaluedMap<String, String> parameters, String url) {
-    URLConnectionClientHandler urlConnectionClientHandler  = new URLConnectionClientHandler(new ConnectionFactory());
-    Client client = new Client(urlConnectionClientHandler);
+    DefaultClientConfig clientConfig = new DefaultClientConfig();
+    clientConfig.getClasses().add(MultiPartWriter.class);
+    if (System.getenv(HTTP_PROXY_HOST) != null) {
+      String proxyHost = System.getenv(HTTP_PROXY_HOST);
+      Integer proxyPort = 80;
+      if (System.getenv(HTTP_PROXY_PORT) != null) {
+        proxyPort = Integer.valueOf(System.getenv(HTTP_PROXY_PORT));
+      }
+      clientConfig.getProperties().put("jersey.config.client.proxy.uri", proxyHost + ":" + proxyPort);
+    }
+    Client client = Client.create(clientConfig);
     FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
     ClientResponse clientResponse = null;
     WebResource webResource;
