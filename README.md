@@ -100,6 +100,6 @@ Ihor Popyk (ihor.popyk@crowdin.com)
 
 https://github.com/ihor-popyk
 
-Copyright: 2018 crowdin.com
+Copyright: 2020 crowdin.com
 
 This project is licensed under the MIT license, a copy of which can be found in the LICENSE file.
