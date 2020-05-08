@@ -50,7 +50,7 @@ public class CrowdinApiClientImpl implements CrowdinApiClient{
 
   public static final String CROWDIN_API_EXPORT_FILE_URL = "project/%(project-identifier)/export-file?key=%(project-key)";
 
-  public static final String CROWDIN_API_EXPORT_TRANSLATIONS_URL = "project/%(project-identifier)/export/%(export-language)?key=%(project-key)";
+  public static final String CROWDIN_API_EXPORT_TRANSLATIONS_URL = "project/%(project-identifier)/export?key=%(project-key)";
 
   public static final String CROWDIN_API_LANGUAGE_STATUS_URL = "project/%(project-identifier)/language-status?key=%(project-key)";
 
