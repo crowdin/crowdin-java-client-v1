@@ -3,9 +3,10 @@ package com.crowdin.parameters;
 import com.crowdin.exceptions.DirectoryNotFoundException;
 import com.crowdin.exceptions.UnAcceptableParametersValueException;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
+
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.File;
 import java.util.Map;
-import javax.ws.rs.core.MultivaluedMap;
 
 /**
  *
